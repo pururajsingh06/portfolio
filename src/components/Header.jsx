@@ -20,7 +20,7 @@ export default function Header({ theme, handleThemeToggle, activeSection }) {
         <header id="header" className={headerScrolled ? 'scrolled' : ''}>
             <div className="container nav-container">
                 <a href="#home" className="logo" onClick={handleLinkClick}>
-                    CREATIVE<span className="logo-dot"></span>
+                    PS<span className="logo-dot"></span>
                 </a>
                 
                 <ul className={`nav-links ${menuOpen ? 'active' : ''}`} id="nav-links">

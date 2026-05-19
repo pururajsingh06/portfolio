@@ -49,11 +49,11 @@ export default function Hero() {
                 <div className="hero-text">
                     <div className="hero-subtitle">
                         <span className="hero-pulse"></span>
-                        Available for Freelance & Contracts
+                        Welcome to my Portfolio
                     </div>
                     <h1 className="hero-title">
-                        Crafting <span className="gradient-text">Interfaces</span>,<br />
-                        Designing <span className="gradient-text">Experiences</span>
+                        Hii I'm ,<br />
+                       <span className="gradient-text"> Pururaj </span> <span className="gradient-text">Singh</span>
                     </h1>
                     <p className="hero-description">
                         I am a <span ref={typewriterRef} className="gradient-text" style={{ fontWeight: 700 }}></span><span className="typewriter-cursor">|</span> who blends elegant technical code with visually breathtaking graphics. Let's build something exceptional.
@@ -61,23 +61,6 @@ export default function Hero() {
                     <div className="hero-ctas">
                         <a href="#projects" className="btn btn-primary">View My Work <i className="fa-solid fa-arrow-right"></i></a>
                         <a href="#contact" className="btn btn-secondary">Get In Touch</a>
-                    </div>
-                </div>
-                <div className="hero-visual">
-                    <div className="hero-blob-wrapper">
-                        <div className="hero-blob"></div>
-                        <div className="hero-img-card glass-card">
-                            <img src="assets/cyberpunk_poster.png" alt="Creative cyberpunk profile poster visual art" id="hero-interactive-img" />
-                        </div>
-                        <div className="hero-floating-badge glass-card">
-                            <div className="hero-badge-icon">
-                                <i className="fa-solid fa-wand-magic-sparkles"></i>
-                            </div>
-                            <div className="hero-badge-text">
-                                <h4>100% Custom</h4>
-                                <p>No templates used</p>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>

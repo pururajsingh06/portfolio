@@ -68,10 +68,16 @@ export default function About() {
                     <div className="about-text">
                         <h3>Fusing Code & Visual Design</h3>
                         <p>
-                            I don't believe in the separation of aesthetics and performance. A gorgeous user interface is only as good as the software driving it under the hood. As a developer with a deep background in visual arts, I construct web architectures that are lightning-fast, structurally accessible, and visually stunning.
+                            Hey, I’m Pururaj — a 3rd year B.Tech student passionate about building modern digital experiences through code and design. I enjoy developing full-stack web applications, experimenting with AI/ML systems, and creating real-time interactive platforms that solve meaningful problems.
                         </p>
                         <p>
-                            Whether building real-time collaborative development boards or styling high-fidelity graphics, Swiss-grid print layouts, and digital poster designs, I approach every project with rigorous attention to detail, polished micro-interactions, and scalable design tokens.
+                            I love working on projects that combine clean UI/UX with strong backend logic, whether it’s an AI-powered traffic simulator, a collaborative coding platform, or intelligent analytics dashboards. Along with development, I also enjoy designing interfaces in Figma and turning ideas into polished, user-friendly products.
+                        </p>
+                        <p>
+                            My interests include web development, real-time systems, AI/ML, and product design. I’m always exploring new technologies, improving my skills, and building projects that challenge me creatively and technically.
+                        </p>
+                        <p>
+                            When I’m not coding, you’ll probably find me listening to music, exploring tech trends, or working on new ideas and side projects.
                         </p>
                         
                         <div className="about-stats">

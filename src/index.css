@@ -429,11 +429,19 @@ header.scrolled {
 }
 
 .hero-grid {
-    display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
-    gap: 3rem;
+    display: flex;
+    justify-content: center;
     align-items: center;
     width: 100%;
+}
+
+.hero-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .hero-subtitle {
@@ -445,6 +453,7 @@ header.scrolled {
     margin-bottom: 1rem;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 0.75rem;
 }
 
@@ -479,7 +488,9 @@ header.scrolled {
     font-size: 1.15rem;
     color: var(--text-secondary);
     margin-bottom: 2.5rem;
-    max-width: 550px;
+    max-width: 650px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .typewriter-cursor {
@@ -498,6 +509,7 @@ header.scrolled {
 .hero-ctas {
     display: flex;
     gap: 1.5rem;
+    justify-content: center;
 }
 
 .hero-visual {
