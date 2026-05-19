@@ -62,6 +62,18 @@ export default function Hero() {
                         <a href="#projects" className="btn btn-primary">View My Work <i className="fa-solid fa-arrow-right"></i></a>
                         <a href="#contact" className="btn btn-secondary">Get In Touch</a>
                     </div>
+                    
+                    <div className="hero-social-links" style={{ display: 'flex', gap: '2.5rem', marginTop: '2.5rem', justifyContent: 'center', alignItems: 'center' }}>
+                        <a href="https://github.com/pururajsingh06" target="_blank" rel="noopener noreferrer" style={{ fontSize: '1.05rem', color: 'var(--text-secondary)', display: 'flex', alignItems: 'center', gap: '0.6rem', transition: 'var(--transition-smooth)' }} className="hero-social-link">
+                            <i className="fa-brands fa-github" style={{ fontSize: '1.3rem' }}></i> GitHub
+                        </a>
+                        <a href="https://www.linkedin.com/in/pururaj-singh-9b91a22bb/" target="_blank" rel="noopener noreferrer" style={{ fontSize: '1.05rem', color: 'var(--text-secondary)', display: 'flex', alignItems: 'center', gap: '0.6rem', transition: 'var(--transition-smooth)' }} className="hero-social-link">
+                            <i className="fa-brands fa-linkedin" style={{ fontSize: '1.3rem' }}></i> LinkedIn
+                        </a>
+                        <a href="mailto:pururajsingh76@gmail.com" style={{ fontSize: '1.05rem', color: 'var(--text-secondary)', display: 'flex', alignItems: 'center', gap: '0.6rem', transition: 'var(--transition-smooth)' }} className="hero-social-link">
+                            <i className="fa-solid fa-envelope" style={{ fontSize: '1.3rem' }}></i> Email
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>

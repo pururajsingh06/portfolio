@@ -512,6 +512,11 @@ header.scrolled {
     justify-content: center;
 }
 
+.hero-social-link:hover {
+    color: var(--accent-primary) !important;
+    transform: translateY(-2px);
+}
+
 .hero-visual {
     position: relative;
     display: flex;
