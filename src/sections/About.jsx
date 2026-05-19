@@ -60,13 +60,11 @@ export default function About() {
         <section id="about" ref={aboutSectionRef}>
             <div className="container">
                 <div className="section-header">
-                    <span className="section-subtitle">About Me</span>
-                    <h2 className="section-title">The Hybrid Approach</h2>
+                    <h2 className="section-title">Get To Know Me</h2>
                 </div>
                 
                 <div className="about-grid">
                     <div className="about-text">
-                        <h3>Fusing Code & Visual Design</h3>
                         <p>
                             Hey, I’m Pururaj — a 3rd year B.Tech student passionate about building modern digital experiences through code and design. I enjoy developing full-stack web applications, experimenting with AI/ML systems, and creating real-time interactive platforms that solve meaningful problems.
                         </p>
@@ -97,8 +95,10 @@ export default function About() {
                         
                         <div className="skill-bar-wrapper">
                             <div className="skill-info">
-                                <span className="skill-name">Frontend Architecture (JS/React/CSS3)</span>
-                                <span className="skill-pct">95%</span>
+                                <span className="skill-name">Full-Stack Web Development</span>
+                            </div>
+                            <div className="skill-desc" style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginBottom: '0.5rem' }}>
+                                React, Node.js, Express, WebSockets, RESTful Routing
                             </div>
                             <div className="skill-track">
                                 <div className="skill-progress" style={{ width: animateTriggered ? '95%' : '0%' }}></div>
@@ -107,8 +107,10 @@ export default function About() {
                         
                         <div className="skill-bar-wrapper" style={{ marginTop: '1.5rem' }}>
                             <div className="skill-info">
-                                <span className="skill-name">Interface & Graphic Design (UI/UX)</span>
-                                <span className="skill-pct">90%</span>
+                                <span className="skill-name">Machine Learning & AI</span>
+                            </div>
+                            <div className="skill-desc" style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginBottom: '0.5rem' }}>
+                                Python, Data Science, Neural Networks, NLP, AI Modeling
                             </div>
                             <div className="skill-track">
                                 <div className="skill-progress" style={{ width: animateTriggered ? '90%' : '0%' }}></div>
@@ -117,21 +119,25 @@ export default function About() {
                         
                         <div className="skill-bar-wrapper" style={{ marginTop: '1.5rem' }}>
                             <div className="skill-info">
-                                <span className="skill-name">Backend Logic & Real-time WebSockets</span>
-                                <span className="skill-pct">85%</span>
+                                <span className="skill-name">UI/UX Design & Prototyping</span>
+                            </div>
+                            <div className="skill-desc" style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginBottom: '0.5rem' }}>
+                                Figma, Design Systems, Vector Art, Digital Layouts
                             </div>
                             <div className="skill-track">
-                                <div className="skill-progress" style={{ width: animateTriggered ? '85%' : '0%' }}></div>
+                                <div className="skill-progress" style={{ width: animateTriggered ? '92%' : '0%' }}></div>
                             </div>
                         </div>
                         
                         <div className="skill-bar-wrapper" style={{ marginTop: '1.5rem' }}>
                             <div className="skill-info">
-                                <span className="skill-name">Posters & Vector Typography</span>
-                                <span className="skill-pct">92%</span>
+                                <span className="skill-name">Databases & Cloud Operations</span>
+                            </div>
+                            <div className="skill-desc" style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginBottom: '0.5rem' }}>
+                                MongoDB, PostgreSQL, SQL, Git & Version Control
                             </div>
                             <div className="skill-track">
-                                <div className="skill-progress" style={{ width: animateTriggered ? '92%' : '0%' }}></div>
+                                <div className="skill-progress" style={{ width: animateTriggered ? '85%' : '0%' }}></div>
                             </div>
                         </div>
                     </div>
