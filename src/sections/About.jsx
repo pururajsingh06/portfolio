@@ -17,7 +17,7 @@ export default function About() {
                     const duration = 1500;
                     const steps = duration / 16;
                     
-                    const targetProjects = 12;
+                    const targetProjects = 5;
                     const targetYears = 5;
                     
                     let curProjects = 0;
