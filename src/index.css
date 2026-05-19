@@ -512,9 +512,27 @@ header.scrolled {
     justify-content: center;
 }
 
+.hero-social-link {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    transition: var(--transition-smooth);
+    box-shadow: 0 4px 12px var(--shadow-color);
+}
+
 .hero-social-link:hover {
     color: var(--accent-primary) !important;
-    transform: translateY(-2px);
+    border-color: var(--accent-primary);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px var(--accent-glow);
 }
 
 .hero-visual {
