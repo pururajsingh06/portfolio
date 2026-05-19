@@ -263,7 +263,7 @@ export default function App() {
         const typewriterEl = typewriterRef.current;
         if (!typewriterEl) return;
 
-        const occupations = ["Creative Developer", "UI/UX Designer", "Graphic Artist", "Problem Solver"];
+        const occupations = ["Full Stack Developer", "ML Enthusiast", "Creative Developer", "Problem Solver"];
         let wordIndex = 0;
         let charIndex = 0;
         let isDeleting = false;
@@ -430,7 +430,7 @@ export default function App() {
             title: 'CoDrift Collaborative IDE',
             desc: 'A production-grade real-time collaborative workspace supporting live cursor sharing, multi-file code executions, WebRTC audio chambers, and JWT authentications.',
             tech: ['NodeJS', 'WebSockets', 'YJS SharedDoc', 'Monaco IDE'],
-            github: 'https://github.com',
+            github: 'https://github.com/pururajsingh06',
             demo: '#'
         },
         {
@@ -914,7 +914,7 @@ export default function App() {
                                         </div>
                                         <div className="contact-details">
                                             <h4>Email Address</h4>
-                                            <p>design.coder@portfolio.io</p>
+                                            <p>pururajsingh76@gmail.com</p>
                                         </div>
                                     </div>
                                     
@@ -939,10 +939,10 @@ export default function App() {
                                     </div>
                                     
                                     <div className="social-links">
-                                        <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="social-btn" aria-label="GitHub Profile">
+                                        <a href="https://github.com/pururajsingh06" target="_blank" rel="noopener noreferrer" className="social-btn" aria-label="GitHub Profile">
                                             <i className="fa-brands fa-github"></i>
                                         </a>
-                                        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="social-btn" aria-label="LinkedIn Profile">
+                                        <a href="https://www.linkedin.com/in/pururaj-singh-9b91a22bb/" target="_blank" rel="noopener noreferrer" className="social-btn" aria-label="LinkedIn Profile">
                                             <i className="fa-brands fa-linkedin-in"></i>
                                         </a>
                                         <a href="https://dribbble.com" target="_blank" rel="noopener noreferrer" className="social-btn" aria-label="Dribbble Designs">
