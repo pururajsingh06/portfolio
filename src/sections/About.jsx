@@ -90,54 +90,42 @@ export default function About() {
                         </div>
                     </div>
                     
-                    <div className="skills-container glass-card" style={{ padding: '2.5rem' }}>
-                        <h3 style={{ marginBottom: '2rem' }}>Technical Toolkit</h3>
+                    <div className="skills-container" style={{ padding: '0' }}>
+                        <h3 style={{ marginBottom: '1.5rem' }}>Technical Toolkit</h3>
                         
                         <div className="skill-bar-wrapper">
                             <div className="skill-info">
-                                <span className="skill-name">Full-Stack Web Development</span>
+                                <h4 style={{ fontSize: '1.1rem', color: 'var(--accent-primary)', marginBottom: '0.25rem' }}>Full-Stack Web Development</h4>
                             </div>
-                            <div className="skill-desc" style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginBottom: '0.5rem' }}>
+                            <div className="skill-desc" style={{ fontSize: '0.95rem', color: 'var(--text-secondary)' }}>
                                 React, Node.js, Express, WebSockets, RESTful Routing
                             </div>
-                            <div className="skill-track">
-                                <div className="skill-progress" style={{ width: animateTriggered ? '95%' : '0%' }}></div>
-                            </div>
                         </div>
                         
-                        <div className="skill-bar-wrapper" style={{ marginTop: '1.5rem' }}>
+                        <div className="skill-bar-wrapper" style={{ marginTop: '1.75rem' }}>
                             <div className="skill-info">
-                                <span className="skill-name">Machine Learning & AI</span>
+                                <h4 style={{ fontSize: '1.1rem', color: 'var(--accent-primary)', marginBottom: '0.25rem' }}>Machine Learning & AI</h4>
                             </div>
-                            <div className="skill-desc" style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginBottom: '0.5rem' }}>
+                            <div className="skill-desc" style={{ fontSize: '0.95rem', color: 'var(--text-secondary)' }}>
                                 Python, Data Science, Neural Networks, NLP, AI Modeling
                             </div>
-                            <div className="skill-track">
-                                <div className="skill-progress" style={{ width: animateTriggered ? '90%' : '0%' }}></div>
-                            </div>
                         </div>
                         
-                        <div className="skill-bar-wrapper" style={{ marginTop: '1.5rem' }}>
+                        <div className="skill-bar-wrapper" style={{ marginTop: '1.75rem' }}>
                             <div className="skill-info">
-                                <span className="skill-name">UI/UX Design & Prototyping</span>
+                                <h4 style={{ fontSize: '1.1rem', color: 'var(--accent-primary)', marginBottom: '0.25rem' }}>UI/UX Design & Prototyping</h4>
                             </div>
-                            <div className="skill-desc" style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginBottom: '0.5rem' }}>
+                            <div className="skill-desc" style={{ fontSize: '0.95rem', color: 'var(--text-secondary)' }}>
                                 Figma, Design Systems, Vector Art, Digital Layouts
                             </div>
-                            <div className="skill-track">
-                                <div className="skill-progress" style={{ width: animateTriggered ? '92%' : '0%' }}></div>
-                            </div>
                         </div>
                         
-                        <div className="skill-bar-wrapper" style={{ marginTop: '1.5rem' }}>
+                        <div className="skill-bar-wrapper" style={{ marginTop: '1.75rem' }}>
                             <div className="skill-info">
-                                <span className="skill-name">Databases & Cloud Operations</span>
+                                <h4 style={{ fontSize: '1.1rem', color: 'var(--accent-primary)', marginBottom: '0.25rem' }}>Databases & Cloud Operations</h4>
                             </div>
-                            <div className="skill-desc" style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginBottom: '0.5rem' }}>
+                            <div className="skill-desc" style={{ fontSize: '0.95rem', color: 'var(--text-secondary)' }}>
                                 MongoDB, PostgreSQL, SQL, Git & Version Control
-                            </div>
-                            <div className="skill-track">
-                                <div className="skill-progress" style={{ width: animateTriggered ? '85%' : '0%' }}></div>
                             </div>
                         </div>
                     </div>
