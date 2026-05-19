@@ -66,6 +66,9 @@ export default function About() {
                 <div className="about-grid">
                     <div className="about-text">
                         <p>
+
+                        </p>
+                        <p>
                             Hey, I’m Pururaj — a 3rd year B.Tech student passionate about building modern digital experiences through code and design. I enjoy developing full-stack web applications, experimenting with AI/ML systems, and creating real-time interactive platforms that solve meaningful problems.
                         </p>
                         <p>
@@ -90,9 +93,9 @@ export default function About() {
                         </div>
                     </div>
                     
-                    <div className="skills-container" style={{ padding: '0' }}>
-                        <h3 style={{ marginBottom: '1.5rem' }}>Technical Toolkit</h3>
-                        
+                    <div className="skills-container glass-card" style={{ padding: '2.5rem' }}>
+                        <h3 style={{ marginBottom: '0.75rem' }}>Technical Toolkit</h3>
+
                         <div className="skill-bar-wrapper">
                             <div className="skill-info">
                                 <h4 style={{ fontSize: '1.1rem', color: 'var(--accent-primary)', marginBottom: '0.25rem' }}>Full-Stack Web Development</h4>
