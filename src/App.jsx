@@ -241,7 +241,7 @@ export default function App() {
     };
 
     const handleCVDownload = () => {
-        window.open('/resume.pdf', '_blank');
+        window.open('/Pururaj_resume_final1.pdf', '_blank');
     };
 
     return (
