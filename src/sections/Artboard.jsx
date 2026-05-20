@@ -1,6 +1,17 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 export default function Artboard({ posters, handleOpenLightbox }) {
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.matchMedia('(max-width: 768px)').matches);
+        };
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
+
     return (
         <section id="artboard">
             <div className="container">
@@ -16,6 +27,10 @@ export default function Artboard({ posters, handleOpenLightbox }) {
                                 className={`poster-card glass-card${poster.type === 'pdf' ? ' poster-card--pdf' : ''}`}
                                 key={idx}
                                 onClick={(e) => {
+                                    if (isMobile && poster.type === 'pdf') {
+                                        window.open(poster.src, '_blank');
+                                        return;
+                                    }
                                     if (poster.type === 'pdf') {
                                         const isOverlayClick = e.target.closest('.poster-info-overlay');
                                         if (!isOverlayClick) return;
@@ -25,12 +40,22 @@ export default function Artboard({ posters, handleOpenLightbox }) {
                             >
                                 <div className="poster-img-wrapper">
                                     {poster.type === 'pdf' ? (
-                                        <iframe
-                                            src={`${poster.src}#toolbar=0&navpanes=0&scrollbar=1`}
-                                            title={poster.title}
-                                            className="poster-pdf-iframe"
-                                            scrolling="yes"
-                                        />
+                                        isMobile ? (
+                                            <div className="poster-pdf-placeholder">
+                                                <div className="pdf-icon-wrapper">
+                                                    <i className="fa-solid fa-file-pdf"></i>
+                                                </div>
+                                                <span className="pdf-placeholder-tag">Odyssey Magazine</span>
+                                                <span className="pdf-placeholder-text">Tap to Read PDF</span>
+                                            </div>
+                                        ) : (
+                                            <iframe
+                                                src={`${poster.src}#toolbar=0&navpanes=0&scrollbar=1`}
+                                                title={poster.title}
+                                                className="poster-pdf-iframe"
+                                                scrolling="yes"
+                                            />
+                                        )
                                     ) : (
                                         <img src={poster.src} alt={`${poster.title} Poster`} />
                                     )}
