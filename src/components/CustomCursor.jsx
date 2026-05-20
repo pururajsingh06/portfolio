@@ -31,7 +31,7 @@ export default function CustomCursor() {
             }
             
             // Instantly position the small dot
-            dot.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
+            dot.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%)`;
         };
 
         const updateFollower = () => {
@@ -40,7 +40,7 @@ export default function CustomCursor() {
             followerX += (mouseX - followerX) * speed;
             followerY += (mouseY - followerY) * speed;
             
-            follower.style.transform = `translate3d(${followerX}px, ${followerY}px, 0)`;
+            follower.style.transform = `translate3d(${followerX}px, ${followerY}px, 0) translate(-50%, -50%)`;
             
             requestAnimationFrame(updateFollower);
         };
