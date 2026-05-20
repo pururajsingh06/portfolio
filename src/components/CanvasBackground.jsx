@@ -10,7 +10,7 @@ export default function CanvasBackground({ theme }) {
         const ctx = canvas.getContext('2d');
         let animationFrameId;
         let particlesArray = [];
-        const numberOfParticles = 75;
+        const numberOfParticles = 90;
         
         const mouse = {
             x: null,
@@ -52,7 +52,7 @@ export default function CanvasBackground({ theme }) {
             }
             
             draw() {
-                ctx.fillStyle = theme === 'light' ? 'rgba(147, 51, 234, 0.25)' : 'rgba(255, 255, 255, 0.2)';
+                ctx.fillStyle = theme === 'light' ? 'rgba(147, 51, 234, 0.6)' : 'rgba(255, 255, 255, 0.4)';
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
                 ctx.closePath();
@@ -99,14 +99,14 @@ export default function CanvasBackground({ theme }) {
         }
 
         function connectParticles() {
-            const lineColor = theme === 'light' ? 'rgba(147, 51, 234, 0.04)' : 'rgba(255, 255, 255, 0.03)';
+            const lineColor = theme === 'light' ? 'rgba(147, 51, 234, 0.15)' : 'rgba(255, 255, 255, 0.1)';
             for (let a = 0; a < particlesArray.length; a++) {
                 for (let b = a; b < particlesArray.length; b++) {
                     let dx = particlesArray[a].x - particlesArray[b].x;
                     let dy = particlesArray[a].y - particlesArray[b].y;
                     let distance = Math.sqrt(dx * dx + dy * dy);
                     
-                    if (distance < 110) {
+                    if (distance < 130) {
                         ctx.strokeStyle = lineColor;
                         ctx.lineWidth = 0.5;
                         ctx.beginPath();
