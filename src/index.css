@@ -1782,6 +1782,7 @@ footer {
 
     .nav-container {
         padding: 0 1.5rem;
+        position: static;
     }
 
     .nav-backdrop {
@@ -1808,8 +1809,8 @@ footer {
     .nav-links {
         position: absolute;
         top: 100%;
-        left: -1.5rem;
-        width: 100vw;
+        left: 0;
+        width: 100%;
         height: auto;
         padding: 2.5rem 0;
         background: rgba(8, 7, 16, 0.98);
