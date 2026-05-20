@@ -989,37 +989,6 @@ header.scrolled {
     background: rgba(0, 0, 0, 0.03);
 }
 
-.project-mobile-links {
-    display: none;
-    gap: 1rem;
-    margin-top: 1.5rem;
-}
-
-.mobile-link-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.6rem 1.2rem;
-    border-radius: 8px;
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid var(--card-border);
-    color: var(--text-primary);
-    font-size: 0.85rem;
-    font-weight: 600;
-    text-decoration: none;
-    transition: var(--transition-smooth);
-}
-
-.mobile-link-btn i {
-    font-size: 0.95rem;
-}
-
-.mobile-link-btn:hover {
-    background: var(--accent-gradient);
-    border-color: transparent;
-    color: white;
-}
-
 /* --- POSTERS & DESIGNS SHOWCASE --- */
 .posters-container {
     display: flex;
@@ -1716,21 +1685,28 @@ footer {
         padding: 6rem 0 3rem 0;
     }
 
-    .project-overlay {
-        display: none !important;
-    }
-
-    .project-mobile-links {
-        display: flex;
-    }
-
-    .poster-info-overlay {
-        transform: translateY(0) !important;
-        background: linear-gradient(to top, rgba(8, 7, 16, 0.98) 0%, rgba(8, 7, 16, 0.7) 70%, transparent 100%) !important;
-    }
-
     .section-title {
         font-size: 2.25rem;
+    }
+
+    .nav-container {
+        padding: 0 1.5rem;
+    }
+
+    .nav-backdrop {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        z-index: 1040;
+    }
+
+    [data-theme="light"] .nav-backdrop {
+        background: rgba(255, 255, 255, 0.4);
     }
 
     .menu-btn {
@@ -1754,6 +1730,7 @@ footer {
         align-items: center;
         gap: 2rem;
         transition: var(--transition-smooth);
+        z-index: 1050;
     }
 
     [data-theme="light"] .nav-links {
@@ -1762,6 +1739,30 @@ footer {
 
     .nav-links.active {
         right: 0;
+    }
+
+    /* Always display overlays on touch devices since there's no hover state */
+    .project-overlay {
+        opacity: 1 !important;
+        background: rgba(8, 7, 16, 0.65) !important;
+        backdrop-filter: blur(4px) !important;
+        -webkit-backdrop-filter: blur(4px) !important;
+    }
+
+    .project-icon-link {
+        transform: translateY(0) !important;
+        width: 44px;
+        height: 44px;
+    }
+
+    .poster-info-overlay {
+        transform: translateY(0) !important;
+        background: rgba(8, 7, 16, 0.85) !important;
+        padding: 1.5rem 1rem 1rem 1rem !important;
+    }
+
+    .hero-title {
+        font-size: 3rem;
     }
 
     /* Hamburger menu toggle states */
@@ -1858,15 +1859,6 @@ footer {
         font-size: 15px;
     }
 
-    .section-title {
-        font-size: 2rem;
-    }
-
-    .section-subtitle {
-        font-size: 0.8rem;
-        letter-spacing: 0.15em;
-    }
-
     .hero-title {
         font-size: 2.75rem;
     }
@@ -1882,22 +1874,8 @@ footer {
         justify-content: center;
     }
 
-    .about-photo-wrap {
-        width: 240px;
-    }
-
-    .filter-btn {
-        padding: 0.5rem 1rem;
-        font-size: 0.85rem;
-    }
-
     .projects-grid {
         grid-template-columns: 1fr;
-    }
-
-    .contact-form-card,
-    .contact-info-card {
-        padding: 1.5rem;
     }
 }
 

@@ -18,6 +18,7 @@ export default function Header({ theme, handleThemeToggle, activeSection }) {
 
     return (
         <header id="header" className={headerScrolled ? 'scrolled' : ''}>
+            {menuOpen && <div className="nav-backdrop" onClick={handleLinkClick}></div>}
             <div className="nav-container">
                 <a href="#home" className="logo" onClick={handleLinkClick}>
                     Pururaj Singh
