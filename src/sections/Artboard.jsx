@@ -41,13 +41,7 @@ export default function Artboard({ posters, handleOpenLightbox }) {
                                 <div className="poster-img-wrapper">
                                     {poster.type === 'pdf' ? (
                                         isMobile ? (
-                                            <div className="poster-pdf-placeholder">
-                                                <div className="pdf-icon-wrapper">
-                                                    <i className="fa-solid fa-file-pdf"></i>
-                                                </div>
-                                                <span className="pdf-placeholder-tag">Odyssey Magazine</span>
-                                                <span className="pdf-placeholder-text">Tap to Read PDF</span>
-                                            </div>
+                                            <img src={poster.cover} alt={`${poster.title} Cover`} />
                                         ) : (
                                             <iframe
                                                 src={`${poster.src}#toolbar=0&navpanes=0&scrollbar=1`}

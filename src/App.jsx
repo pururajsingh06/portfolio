@@ -6,6 +6,7 @@ import m5Img from './assets/M5.png';
 import pixelImg from './assets/Pixel.png';
 import omenfinalImg from './assets/Omenfinal.jpg';
 import odysseyPdf from './assets/Odyessy3.0.pdf';
+import odysseyCover from './assets/odyssey_cover.jpg';
 
 // Import Atomic UI Components
 import CanvasBackground from './components/CanvasBackground';
@@ -78,6 +79,7 @@ export default function App() {
         {
             type: 'pdf',
             src: odysseyPdf,
+            cover: odysseyCover,
             title: 'Odyssey 3.0',
             desc: 'A curated design magazine featuring editorial layouts, creative spreads, and visual storytelling.'
         }
