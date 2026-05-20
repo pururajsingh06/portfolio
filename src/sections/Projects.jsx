@@ -109,6 +109,18 @@ export default function Projects({ activeCategory, setActiveCategory }) {
                                             <span className="tech-badge" key={i}>{t}</span>
                                         ))}
                                     </div>
+                                    <div className="project-mobile-links">
+                                        {proj.github && (
+                                            <a href={proj.github} target="_blank" rel="noopener noreferrer" className="mobile-link-btn" aria-label="GitHub Repository">
+                                                <i className="fa-brands fa-github"></i> Code
+                                            </a>
+                                        )}
+                                        {proj.demo && (
+                                            <a href={proj.demo} target={proj.demo === '#' ? '_self' : '_blank'} rel="noopener noreferrer" className="mobile-link-btn" aria-label="Live Demo Link">
+                                                <i className="fa-solid fa-arrow-up-right-from-square"></i> Demo
+                                            </a>
+                                        )}
+                                    </div>
                                 </div>
                             </div>
                         ))}
