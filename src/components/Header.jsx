@@ -18,11 +18,11 @@ export default function Header({ theme, handleThemeToggle, activeSection }) {
 
     return (
         <header id="header" className={headerScrolled ? 'scrolled' : ''}>
-            <div className="container nav-container">
+            <div className="nav-container">
                 <a href="#home" className="logo" onClick={handleLinkClick}>
-                    PS<span className="logo-dot"></span>
+                    Pururaj Singh
                 </a>
-                
+
                 <ul className={`nav-links ${menuOpen ? 'active' : ''}`} id="nav-links">
                     <li>
                         <a href="#home" className={activeSection === 'home' ? 'active' : ''} onClick={handleLinkClick}>Home</a>
@@ -37,19 +37,16 @@ export default function Header({ theme, handleThemeToggle, activeSection }) {
                         <a href="#artboard" className={activeSection === 'artboard' ? 'active' : ''} onClick={handleLinkClick}>Artboard</a>
                     </li>
                     <li>
-                        <a href="#resume" className={activeSection === 'resume' ? 'active' : ''} onClick={handleLinkClick}>Resume</a>
-                    </li>
-                    <li>
                         <a href="#contact" className={activeSection === 'contact' ? 'active' : ''} onClick={handleLinkClick}>Contact</a>
                     </li>
                 </ul>
-                
+
                 <div className="nav-actions">
                     <button className="theme-toggle" id="theme-toggle" onClick={handleThemeToggle} aria-label="Toggle dark/light theme">
                         <i className="fa-solid fa-moon" style={{ display: theme === 'dark' ? 'block' : 'none' }}></i>
                         <i className="fa-solid fa-sun" style={{ display: theme === 'light' ? 'block' : 'none' }}></i>
                     </button>
-                    
+
                     <button className={`menu-btn ${menuOpen ? 'active' : ''}`} id="menu-btn" onClick={() => setMenuOpen(prev => !prev)} aria-label="Open navigation menu">
                         <span></span>
                         <span></span>

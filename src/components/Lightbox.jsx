@@ -18,7 +18,15 @@ export default function Lightbox({ lightbox, handleCloseLightbox, handlePrevPost
             </button>
             
             <div className="lightbox-content-wrapper">
-                <img src={lightbox.src} alt={lightbox.title} className="lightbox-img" id="lightbox-img" />
+                {lightbox.type === 'pdf' ? (
+                    <iframe 
+                        src={`${lightbox.src}#toolbar=0&navpanes=0&scrollbar=1`} 
+                        title={lightbox.title} 
+                        className="lightbox-pdf" 
+                    />
+                ) : (
+                    <img src={lightbox.src} alt={lightbox.title} className="lightbox-img" id="lightbox-img" />
+                )}
                 <div className="lightbox-caption">
                     <h3 className="lightbox-title">{lightbox.title}</h3>
                     <p className="lightbox-subtitle">{lightbox.desc}</p>

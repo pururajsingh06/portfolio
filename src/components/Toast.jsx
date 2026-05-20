@@ -1,15 +1,19 @@
 import React from 'react';
 
-export default function Toast({ toastVisible }) {
+export default function Toast({ visible, message, type = 'success' }) {
     return (
         <div className="toast-container" id="toast-container">
-            <div className={`toast ${toastVisible ? 'show' : ''}`} id="success-toast">
+            <div className={`toast ${visible ? 'show' : ''} ${type}`} id="success-toast">
                 <div className="toast-icon">
-                    <i className="fa-solid fa-circle-check"></i>
+                    {type === 'success' ? (
+                        <i className="fa-solid fa-circle-check" style={{ color: 'var(--accent-primary)' }}></i>
+                    ) : (
+                        <i className="fa-solid fa-circle-exclamation" style={{ color: 'var(--accent-secondary)' }}></i>
+                    )}
                 </div>
                 <div className="toast-content">
-                    <h4>Message Dispatched!</h4>
-                    <p>Thank you. I will reply within 12 hours.</p>
+                    <h4>{type === 'success' ? 'Message Dispatched!' : 'Submission Failed'}</h4>
+                    <p>{message}</p>
                 </div>
             </div>
         </div>

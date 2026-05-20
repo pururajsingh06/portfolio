@@ -4,33 +4,53 @@ export default function Projects({ activeCategory, setActiveCategory }) {
     const projects = [
         {
             category: 'web',
-            img: 'assets/cyberpunk_poster.png',
-            tag: 'Web Dev / Websockets',
-            title: 'CoDrift Collaborative IDE',
-            desc: 'A production-grade real-time collaborative workspace supporting live cursor sharing, multi-file code executions, WebRTC audio chambers, and JWT authentications.',
-            tech: ['NodeJS', 'WebSockets', 'YJS SharedDoc', 'Monaco IDE'],
-            github: 'https://github.com/pururajsingh06',
-            demo: '#'
+            img: 'assets/repoiq.png',
+            tag: '',
+            title: 'RepoIQ',
+            desc: 'RepoIQ is an AI-powered GitHub repository analyzer that evaluates code quality, project structure, and documentation while providing intelligent insights and improvement suggestions.',
+            tech: ['React', 'Node.js', 'Axios', 'Github REST API', 'Gemini API'],
+            github: 'https://github.com/pururajsingh06/RepoIQ',
+            demo: 'https://repoiq.onrender.com/'
         },
         {
-            category: 'design',
-            img: 'assets/abstract_poster.png',
-            tag: 'UI/UX / Data Analysis',
-            title: 'VibeScale Analytics UI',
-            desc: 'A gorgeous, highly analytical HSL-driven dashboard for multilingual sentiment monitoring. Features interactive telemetry graphing and dark space components.',
-            tech: ['React', 'ChartJS', 'Figma Prototyping', 'CSS Glows'],
-            figma: 'https://figma.com',
-            demo: '#'
+            category: ['web', 'collaborative'],
+            img: 'assets/codrift.png',
+            tag: '',
+            title: 'CoDrift',
+            desc: 'CoDrift is a real-time collaborative coding platform where teams can work together on projects with live editing, synchronized cursors, multi-file workspaces, and integrated voice communication channels.',
+            tech: ['React', 'Node.js', 'Monaco Editor', 'Socket.io', 'WebRTC', 'MongoDB', 'Nodemailer'],
+            github: 'https://github.com/pururajsingh06/CoDrift',
+            demo: 'https://co-drift.vercel.app/'
         },
         {
-            category: 'design',
-            img: 'assets/swiss_poster.png',
-            tag: 'UI/UX / Design System',
-            title: 'Aetheria UI Token Set',
-            desc: 'A unified design token catalog and component repository focused on advanced accessibility, micro-interactions, responsive grids, and global themes.',
-            tech: ['CSS Variables', 'Storybook', 'A11y W3C', 'Vanilla JS'],
-            github: 'https://github.com/pururajsingh06',
-            demo: '#'
+            category: 'ml',
+            img: 'assets/sentiment.png',
+            tag: '',
+            title: 'Sentiment Analysis System',
+            desc: 'Multilingual sentiment analysis app that classifies tweets and comments using NLP techniques, TF-IDF vectorization, and machine learning models for sentiment prediction.',
+            tech: ['Python', 'NLTK', 'Scikit-learn', 'Pandas', 'NumPy', 'Matplotlib', 'Seaborn'],
+            github: 'https://github.com/pururajsingh06/SentimentAnalysis',
+            demo: 'https://sentimentanalysis06.streamlit.app/'
+        },
+        {
+            category: 'web',
+            img: 'assets/careconnect.png',
+            tag: '',
+            title: 'CareConnect',
+            desc: 'CareConnect is a web-based healthcare platform designed to streamline hospital operations through patient management, staff workflows, appointment scheduling, and secure data handling using a modern and scalable interface.',
+            tech: ['React', 'Tailwind CSS', 'Node.js', 'MySQL'],
+            github: 'https://github.com/pururajsingh06/Care-Connect',
+            demo: 'https://careconnect-1v6s.vercel.app/'
+        },
+        {
+            category: 'web',
+            img: 'assets/agrovisor.png',
+            tag: '',
+            title: 'Agrovisor',
+            desc: 'AgroAdvisor is a smart farming platform that provides weather insights, crop recommendations, soil analysis, and real-time agricultural guidance through a modern responsive web application.',
+            tech: ['HTML', 'CSS', 'PHP', 'Weather API', 'Market prices API'],
+            github: 'https://github.com/pururajsingh06/farmer-advisory-website',
+            demo: 'https://farmeradvisor.netlify.app/'
         }
     ];
 
@@ -41,16 +61,23 @@ export default function Projects({ activeCategory, setActiveCategory }) {
                     <span className="section-subtitle">Portfolio</span>
                     <h2 className="section-title">Featured Creations</h2>
                 </div>
-                
+
                 <div className="filter-tabs">
                     <button className={`filter-btn ${activeCategory === 'all' ? 'active' : ''}`} onClick={() => setActiveCategory('all')}>All Work</button>
                     <button className={`filter-btn ${activeCategory === 'web' ? 'active' : ''}`} onClick={() => setActiveCategory('web')}>Web Dev</button>
-                    <button className={`filter-btn ${activeCategory === 'design' ? 'active' : ''}`} onClick={() => setActiveCategory('design')}>UI/UX Design</button>
+                    <button className={`filter-btn ${activeCategory === 'collaborative' ? 'active' : ''}`} onClick={() => setActiveCategory('collaborative')}>Collaborative</button>
+                    <button className={`filter-btn ${activeCategory === 'ml' ? 'active' : ''}`} onClick={() => setActiveCategory('ml')}>Machine Learning</button>
                 </div>
-                
+
                 <div className="projects-grid" id="projects-grid">
                     {projects
-                        .filter(proj => activeCategory === 'all' || proj.category === activeCategory)
+                        .filter(proj => {
+                            if (activeCategory === 'all') return true;
+                            if (Array.isArray(proj.category)) {
+                                return proj.category.includes(activeCategory);
+                            }
+                            return proj.category === activeCategory;
+                        })
                         .map((proj, idx) => (
                             <div className="project-card glass-card" key={idx}>
                                 <div className="project-img-wrapper">
@@ -66,13 +93,15 @@ export default function Projects({ activeCategory, setActiveCategory }) {
                                                 <i className="fa-brands fa-figma"></i>
                                             </a>
                                         )}
-                                        <a href={proj.demo} className="project-icon-link" aria-label="Live Demo Link">
-                                            <i className="fa-solid fa-arrow-up-right-from-square"></i>
-                                        </a>
+                                        {proj.demo && (
+                                            <a href={proj.demo} target={proj.demo === '#' ? '_self' : '_blank'} rel="noopener noreferrer" className="project-icon-link" aria-label="Live Demo Link">
+                                                <i className="fa-solid fa-arrow-up-right-from-square"></i>
+                                            </a>
+                                        )}
                                     </div>
                                 </div>
                                 <div className="project-content">
-                                    <span className="project-tag">{proj.tag}</span>
+                                    {proj.tag && <span className="project-tag">{proj.tag}</span>}
                                     <h3 className="project-title">{proj.title}</h3>
                                     <p className="project-desc">{proj.desc}</p>
                                     <div className="project-tech">

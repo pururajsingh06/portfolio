@@ -1,80 +1,96 @@
 import React, { useEffect, useRef } from 'react';
 
-export default function CustomCursor({ activeCategory }) {
-    const cursorRef = useRef(null);
+export default function CustomCursor() {
+    const dotRef = useRef(null);
     const followerRef = useRef(null);
-    const mouseCoordsRef = useRef({ x: 0, y: 0 });
-    const followerCoordsRef = useRef({ x: 0, y: 0 });
 
     useEffect(() => {
-        const cursor = cursorRef.current;
+        // Disable on touch devices
+        if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
+            return;
+        }
+
+        const dot = dotRef.current;
         const follower = followerRef.current;
-        if (!cursor || !follower) return;
+        if (!dot || !follower) return;
 
-        let animationFrameId;
+        let mouseX = 0;
+        let mouseY = 0;
+        let followerX = 0;
+        let followerY = 0;
+        let isVisible = false;
 
-        const handleMouseMove = (e) => {
-            mouseCoordsRef.current.x = e.clientX;
-            mouseCoordsRef.current.y = e.clientY;
+        const onMouseMove = (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
             
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
-        };
-
-        window.addEventListener('mousemove', handleMouseMove);
-
-        const animateFollower = () => {
-            const lerpFactor = 0.12;
-            const targetX = mouseCoordsRef.current.x;
-            const targetY = mouseCoordsRef.current.y;
+            if (!isVisible) {
+                dot.style.opacity = '1';
+                follower.style.opacity = '1';
+                isVisible = true;
+            }
             
-            followerCoordsRef.current.x += (targetX - followerCoordsRef.current.x) * lerpFactor;
-            followerCoordsRef.current.y += (targetY - followerCoordsRef.current.y) * lerpFactor;
+            // Instantly position the small dot
+            dot.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
+        };
+
+        const updateFollower = () => {
+            // Smooth linear interpolation (lag effect)
+            const speed = 0.15;
+            followerX += (mouseX - followerX) * speed;
+            followerY += (mouseY - followerY) * speed;
             
-            follower.style.left = followerCoordsRef.current.x + 'px';
-            follower.style.top = followerCoordsRef.current.y + 'px';
+            follower.style.transform = `translate3d(${followerX}px, ${followerY}px, 0)`;
             
-            animationFrameId = requestAnimationFrame(animateFollower);
-        };
-        animateFollower();
-
-        const handleMouseEnter = () => {
-            cursor.style.transform = 'translate(-50%, -50%) scale(2)';
-            cursor.style.backgroundColor = 'var(--accent-secondary)';
-            follower.style.width = '55px';
-            follower.style.height = '55px';
-            follower.style.borderColor = 'var(--accent-secondary)';
+            requestAnimationFrame(updateFollower);
         };
 
-        const handleMouseLeave = () => {
-            cursor.style.transform = 'translate(-50%, -50%) scale(1)';
-            cursor.style.backgroundColor = 'var(--text-primary)';
-            follower.style.width = '32px';
-            follower.style.height = '32px';
-            follower.style.borderColor = 'var(--accent-primary)';
+        window.addEventListener('mousemove', onMouseMove);
+        const animFrame = requestAnimationFrame(updateFollower);
+
+        // Hover triggers for all interactive items
+        const onMouseOver = (e) => {
+            const target = e.target;
+            const isClickable = target.closest('a, button, [role="button"], .poster-card, .project-card, .theme-toggle, .filter-tab');
+            if (isClickable) {
+                dot.classList.add('hovered');
+                follower.classList.add('hovered');
+            } else {
+                dot.classList.remove('hovered');
+                follower.classList.remove('hovered');
+            }
         };
 
-        const attachCursorEffects = () => {
-            const interactives = document.querySelectorAll('a, button, .poster-card, .project-card, .form-control');
-            interactives.forEach(el => {
-                el.addEventListener('mouseenter', handleMouseEnter);
-                el.addEventListener('mouseleave', handleMouseLeave);
-            });
+        // Window entry/exit behavior
+        const onMouseLeave = () => {
+            dot.style.opacity = '0';
+            follower.style.opacity = '0';
+            isVisible = false;
         };
-        
-        const timer = setTimeout(attachCursorEffects, 100);
+
+        const onMouseEnter = () => {
+            dot.style.opacity = '1';
+            follower.style.opacity = '1';
+            isVisible = true;
+        };
+
+        document.addEventListener('mouseover', onMouseOver);
+        document.addEventListener('mouseleave', onMouseLeave);
+        document.addEventListener('mouseenter', onMouseEnter);
 
         return () => {
-            window.removeEventListener('mousemove', handleMouseMove);
-            cancelAnimationFrame(animationFrameId);
-            clearTimeout(timer);
+            window.removeEventListener('mousemove', onMouseMove);
+            cancelAnimationFrame(animFrame);
+            document.removeEventListener('mouseover', onMouseOver);
+            document.removeEventListener('mouseleave', onMouseLeave);
+            document.removeEventListener('mouseenter', onMouseEnter);
         };
-    }, [activeCategory]);
+    }, []);
 
     return (
         <>
-            <div className="custom-cursor" ref={cursorRef}></div>
-            <div className="custom-cursor-follower" ref={followerRef}></div>
+            <div ref={dotRef} className="custom-cursor" style={{ opacity: 0 }} />
+            <div ref={followerRef} className="custom-cursor-follower" style={{ opacity: 0 }} />
         </>
     );
 }
