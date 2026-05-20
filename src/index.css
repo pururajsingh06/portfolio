@@ -1806,22 +1806,28 @@ footer {
     }
 
     .nav-links {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 75%;
-        max-width: 320px;
-        height: 100vh;
+        position: absolute;
+        top: 100%;
+        left: -1.5rem;
+        width: 100vw;
+        height: auto;
+        padding: 2.5rem 0;
         background: rgba(8, 7, 16, 0.98);
         backdrop-filter: blur(20px);
         -webkit-backdrop-filter: blur(20px);
-        border-left: 1px solid var(--card-border);
+        border-bottom: 1px solid var(--card-border);
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        gap: 2rem;
-        transition: var(--transition-smooth);
+        gap: 1.5rem;
+        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         z-index: 1050;
+        
+        /* Hidden state */
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-20px);
+        pointer-events: none;
     }
 
     [data-theme="light"] .nav-links {
@@ -1829,7 +1835,10 @@ footer {
     }
 
     .nav-links.active {
-        right: 0;
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+        pointer-events: auto;
     }
 
     /* Always display overlays on touch devices since there's no hover state */
