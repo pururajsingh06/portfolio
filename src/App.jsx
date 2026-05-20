@@ -136,7 +136,7 @@ export default function App() {
 
     const handleOpenLightbox = (index) => {
         const item = posters[index];
-        setLightbox({ active: true, type: item.type, src: item.src, title: item.title, desc: item.desc, index });
+        setLightbox({ active: true, type: item.type, src: item.src, cover: item.cover, title: item.title, desc: item.desc, index });
         document.body.style.overflow = 'hidden';
     };
 
@@ -149,7 +149,7 @@ export default function App() {
         setLightbox(prev => {
             const newIndex = (prev.index - 1 + posters.length) % posters.length;
             const item = posters[newIndex];
-            return { active: true, type: item.type, src: item.src, title: item.title, desc: item.desc, index: newIndex };
+            return { active: true, type: item.type, src: item.src, cover: item.cover, title: item.title, desc: item.desc, index: newIndex };
         });
     };
 
@@ -157,7 +157,7 @@ export default function App() {
         setLightbox(prev => {
             const newIndex = (prev.index + 1) % posters.length;
             const item = posters[newIndex];
-            return { active: true, type: item.type, src: item.src, title: item.title, desc: item.desc, index: newIndex };
+            return { active: true, type: item.type, src: item.src, cover: item.cover, title: item.title, desc: item.desc, index: newIndex };
         });
     };
 
