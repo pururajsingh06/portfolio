@@ -1709,6 +1709,12 @@ footer {
     body {
         cursor: auto !important;
     }
+}
+
+@media (max-width: 768px) {
+    section {
+        padding: 6rem 0 3rem 0;
+    }
 
     .project-overlay {
         display: none !important;
@@ -1721,12 +1727,6 @@ footer {
     .poster-info-overlay {
         transform: translateY(0) !important;
         background: linear-gradient(to top, rgba(8, 7, 16, 0.98) 0%, rgba(8, 7, 16, 0.7) 70%, transparent 100%) !important;
-    }
-}
-
-@media (max-width: 768px) {
-    section {
-        padding: 6rem 0 3rem 0;
     }
 
     .section-title {
