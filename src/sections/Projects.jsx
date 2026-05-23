@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 export default function Projects({ activeCategory, setActiveCategory }) {
     const projects = [
@@ -57,17 +58,29 @@ export default function Projects({ activeCategory, setActiveCategory }) {
     return (
         <section id="projects">
             <div className="container">
-                <div className="section-header">
+                <motion.div 
+                    className="section-header"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                >
                     <span className="section-subtitle">Portfolio</span>
                     <h2 className="section-title">Featured Creations</h2>
-                </div>
+                </motion.div>
 
-                <div className="filter-tabs">
+                <motion.div 
+                    className="filter-tabs"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.2 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                >
                     <button className={`filter-btn ${activeCategory === 'all' ? 'active' : ''}`} onClick={() => setActiveCategory('all')}>All Work</button>
                     <button className={`filter-btn ${activeCategory === 'web' ? 'active' : ''}`} onClick={() => setActiveCategory('web')}>Web Dev</button>
                     <button className={`filter-btn ${activeCategory === 'collaborative' ? 'active' : ''}`} onClick={() => setActiveCategory('collaborative')}>Collaborative</button>
                     <button className={`filter-btn ${activeCategory === 'ml' ? 'active' : ''}`} onClick={() => setActiveCategory('ml')}>Machine Learning</button>
-                </div>
+                </motion.div>
 
                 <div className="projects-grid" id="projects-grid">
                     {projects
@@ -79,7 +92,14 @@ export default function Projects({ activeCategory, setActiveCategory }) {
                             return proj.category === activeCategory;
                         })
                         .map((proj, idx) => (
-                            <div className="project-card glass-card" key={idx}>
+                            <motion.div 
+                                className="project-card glass-card" 
+                                key={idx}
+                                initial={{ opacity: 0, y: 30 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                                viewport={{ once: true, amount: 0.1 }}
+                            >
                                 <div className="project-img-wrapper">
                                     <img src={proj.img} alt={`${proj.title} Showcase Visual`} />
                                     <div className="project-overlay">
@@ -110,7 +130,7 @@ export default function Projects({ activeCategory, setActiveCategory }) {
                                         ))}
                                     </div>
                                 </div>
-                            </div>
+                            </motion.div>
                         ))}
                 </div>
             </div>

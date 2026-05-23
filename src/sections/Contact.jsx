@@ -1,17 +1,30 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 export default function Contact({ form, errors, handleInputChange, handleFormSubmit, submitStatus }) {
     return (
         <section id="contact">
             <div className="container">
-                <div className="section-header">
+                <motion.div 
+                    className="section-header"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                >
                     <span className="section-subtitle">Get In Touch</span>
                     <h2 className="section-title">Initiate a Collaboration</h2>
-                </div>
+                </motion.div>
 
                 <div className="contact-grid">
                     <div className="contact-info">
-                        <div className="contact-info-card glass-card">
+                        <motion.div 
+                            className="contact-info-card glass-card"
+                            initial={{ opacity: 0, x: -30 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.6 }}
+                            viewport={{ once: true, amount: 0.2 }}
+                        >
                             <h3>Contact Info</h3>
 
                             <div className="contact-item" style={{ marginTop: '1rem' }}>
@@ -43,10 +56,16 @@ export default function Contact({ form, errors, handleInputChange, handleFormSub
                                     <a href="https://www.linkedin.com/in/pururaj-singh-9b91a22bb/" target="_blank" rel="noopener noreferrer">linkedin.com/in/pururaj-singh</a>
                                 </div>
                             </div>
-                        </div>
+                        </motion.div>
                     </div>
 
-                    <div className="contact-form-card glass-card">
+                    <motion.div 
+                        className="contact-form-card glass-card"
+                        initial={{ opacity: 0, x: 30 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.6, delay: 0.2 }}
+                        viewport={{ once: true, amount: 0.2 }}
+                    >
                         <h3 className="form-title">Send a Direct Message</h3>
                         <form id="contact-form" onSubmit={handleFormSubmit} noValidate>
 
@@ -114,7 +133,7 @@ export default function Contact({ form, errors, handleInputChange, handleFormSub
                             </button>
 
                         </form>
-                    </div>
+                    </motion.div>
                 </div>
             </div>
         </section>

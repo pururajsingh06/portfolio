@@ -1,18 +1,21 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
 
 /* --- DESIGN SYSTEM TOKENS --- */
 :root {
     /* Dark Theme (Default) */
-    --bg-primary: hsl(240, 16%, 5%);
-    --bg-secondary: hsl(240, 16%, 9%);
-    --card-bg: rgba(255, 255, 255, 0.03);
-    --card-border: rgba(255, 255, 255, 0.07);
-    --text-primary: hsl(0, 0%, 98%);
-    --text-secondary: hsl(240, 5%, 70%);
-    --accent-primary: hsl(263, 90%, 65%);
-    --accent-secondary: hsl(322, 90%, 60%);
-    --accent-gradient: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-    --accent-glow: #9333ea59;
+    --bg-primary: #1C1C1C;
+    --bg-secondary: #302A18;
+    --card-bg: rgba(253, 228, 195, 0.05);
+    --card-border: rgba(253, 228, 195, 0.1);
+    --text-primary: #F6F6F6;
+    --text-secondary: rgba(246, 246, 246, 0.7);
+    --accent-primary: #FDE4C3;
+    --accent-primary-rgb: 253, 228, 195;
+    --accent-secondary: #302A18;
+    --accent-secondary-rgb: 48, 42, 24;
+    --accent-gradient: linear-gradient(135deg, var(--accent-primary), #d9b88f);
+    --btn-text: #1C1C1C;
+    --accent-glow: rgba(253, 228, 195, 0.3);
     --shadow-color: rgba(0, 0, 0, 0.6);
     --glass-blur: blur(16px);
     --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -21,15 +24,19 @@
 
 [data-theme="light"] {
     /* Light Theme */
-    --bg-primary: hsl(240, 20%, 97%);
-    --bg-secondary: hsl(240, 20%, 93%);
-    --card-bg: rgba(255, 255, 255, 0.65);
-    --card-border: rgba(0, 0, 0, 0.06);
-    --text-primary: hsl(240, 16%, 12%);
-    --text-secondary: hsl(240, 8%, 45%);
-    --accent-primary: hsl(263, 85%, 55%);
-    --accent-secondary: hsl(322, 85%, 50%);
-    --accent-glow: rgba(147, 51, 234, 0.15);
+    --bg-primary: #F6F6F6;
+    --bg-secondary: #FDE4C3;
+    --card-bg: rgba(28, 28, 28, 0.05);
+    --card-border: rgba(28, 28, 28, 0.1);
+    --text-primary: #1C1C1C;
+    --text-secondary: rgba(28, 28, 28, 0.7);
+    --accent-primary: #302A18;
+    --accent-primary-rgb: 48, 42, 24;
+    --accent-secondary: #1C1C1C;
+    --accent-secondary-rgb: 28, 28, 28;
+    --accent-gradient: linear-gradient(135deg, var(--accent-primary), #1C1C1C);
+    --btn-text: #F6F6F6;
+    --accent-glow: rgba(48, 42, 24, 0.2);
     --shadow-color: rgba(0, 0, 0, 0.08);
 }
 
@@ -47,7 +54,7 @@ html {
 }
 
 body {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     background-color: var(--bg-primary);
     color: var(--text-primary);
     line-height: 1.6;
@@ -61,7 +68,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Playfair Display', serif;
     font-weight: 700;
     letter-spacing: -0.02em;
 }
@@ -131,12 +138,20 @@ button {
 }
 
 .glow-orb-2 {
-    width: 500px;
-    height: 500px;
-    background: var(--accent-secondary);
+    width: 400px;
+    height: 400px;
+    background: var(--accent-primary);
     bottom: -15%;
     right: -10%;
     animation-delay: -3s;
+}
+
+[data-theme="light"] .glow-orb-1 {
+    background: rgba(var(--accent-primary-rgb), 0.15);
+}
+
+[data-theme="light"] .glow-orb-2 {
+    background: rgba(var(--accent-primary-rgb), 0.15);
 }
 
 @keyframes pulseOrbs {
@@ -221,7 +236,7 @@ section {
 
 .btn-primary {
     background: var(--accent-gradient);
-    color: white;
+    color: var(--btn-text);
     box-shadow: 0 4px 15px var(--accent-glow);
 }
 
@@ -710,7 +725,7 @@ header.scrolled {
 }
 
 .about-photo-ring:hover {
-    box-shadow: 0 0 30px rgba(147, 51, 234, 0.35), 0 30px 60px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 30px rgba(var(--accent-primary-rgb), 0.35), 0 30px 60px rgba(0, 0, 0, 0.4);
 }
 
 .about-photo-frame {
@@ -822,7 +837,7 @@ header.scrolled {
 .skill-tag:hover {
     color: var(--text-primary);
     border-color: var(--accent-primary);
-    background: rgba(147, 51, 234, 0.1);
+    background: rgba(var(--accent-primary-rgb), 0.1);
     transform: translateY(-2px);
     box-shadow: 0 4px 10px var(--accent-glow);
 }
@@ -832,7 +847,7 @@ header.scrolled {
 }
 
 [data-theme="light"] .skill-tag:hover {
-    background: rgba(147, 51, 234, 0.06);
+    background: rgba(var(--accent-primary-rgb), 0.06);
 }
 
 /* --- PROJECTS SECTION --- */
@@ -863,7 +878,7 @@ header.scrolled {
 
 .filter-btn.active {
     background: var(--accent-gradient);
-    color: white;
+    color: var(--btn-text);
 }
 
 .projects-grid {
@@ -944,9 +959,13 @@ header.scrolled {
 }
 
 .project-icon-link:hover {
-    background: var(--accent-primary);
+    background: #A67C52;
     color: white;
     transform: scale(1.1);
+}
+
+[data-theme="light"] .project-icon-link:hover {
+    background: var(--accent-primary);
 }
 
 .project-content {
@@ -1046,7 +1065,7 @@ header.scrolled {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, rgba(147, 51, 234, 0.12) 0%, rgba(236, 72, 153, 0.04) 100%);
+    background: linear-gradient(135deg, rgba(var(--accent-primary-rgb), 0.12) 0%, rgba(var(--accent-secondary-rgb), 0.04) 100%);
     border-radius: 12px;
     padding: 2rem;
     text-align: center;
@@ -1055,7 +1074,7 @@ header.scrolled {
 }
 
 [data-theme="light"] .poster-pdf-placeholder {
-    background: linear-gradient(135deg, rgba(147, 51, 234, 0.08) 0%, rgba(236, 72, 153, 0.03) 100%);
+    background: linear-gradient(135deg, rgba(var(--accent-primary-rgb), 0.08) 0%, rgba(var(--accent-secondary-rgb), 0.03) 100%);
 }
 
 .poster-pdf-placeholder::before {
@@ -1065,7 +1084,7 @@ header.scrolled {
     left: -50%;
     width: 200%;
     height: 200%;
-    background: radial-gradient(circle, rgba(147, 51, 234, 0.08) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(var(--accent-primary-rgb), 0.08) 0%, transparent 70%);
     animation: rotateGlow 15s linear infinite;
     pointer-events: none;
 }
@@ -1079,14 +1098,14 @@ header.scrolled {
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    background: rgba(236, 72, 153, 0.08);
-    border: 1px solid rgba(236, 72, 153, 0.25);
+    background: rgba(var(--accent-secondary-rgb), 0.08);
+    border: 1px solid rgba(var(--accent-secondary-rgb), 0.25);
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 1.25rem;
     z-index: 2;
-    box-shadow: 0 0 20px rgba(236, 72, 153, 0.15);
+    box-shadow: 0 0 20px rgba(var(--accent-secondary-rgb), 0.15);
 }
 
 .pdf-icon-wrapper i {
@@ -1444,10 +1463,14 @@ body:has(.poster-card--pdf:hover) {
 }
 
 .contact-item:hover .contact-icon {
-    background: var(--accent-gradient);
+    background: #A67C52;
     color: white;
     transform: scale(1.05);
     box-shadow: 0 0 15px var(--accent-glow);
+}
+
+[data-theme="light"] .contact-item:hover .contact-icon {
+    background: var(--accent-primary);
 }
 
 .contact-details h4 {
@@ -1730,14 +1753,14 @@ footer {
 .custom-cursor.hovered {
     width: 4px;
     height: 4px;
-    background-color: var(--accent-secondary);
+    background-color: var(--accent-primary);
 }
 
 .custom-cursor-follower.hovered {
     width: 50px;
     height: 50px;
-    border-color: var(--accent-secondary);
-    background-color: rgba(236, 72, 153, 0.08);
+    border-color: var(--accent-primary);
+    background-color: rgba(var(--accent-primary-rgb), 0.08);
 }
 
 /* Desktop default cursor styling */

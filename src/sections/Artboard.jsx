@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 
 export default function Artboard({ posters, handleOpenLightbox }) {
     const [isMobile, setIsMobile] = useState(false);
@@ -15,17 +16,27 @@ export default function Artboard({ posters, handleOpenLightbox }) {
     return (
         <section id="artboard">
             <div className="container">
-                <div className="section-header">
+                <motion.div 
+                    className="section-header"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                >
                     <span className="section-subtitle">Visual Showcase</span>
                     <h2 className="section-title">Poster & Graphic Art</h2>
-                </div>
+                </motion.div>
 
                 <div className="posters-container">
                     <div className="posters-grid">
                         {posters.map((poster, idx) => (
-                            <div
+                            <motion.div
                                 className={`poster-card glass-card${poster.type === 'pdf' ? ' poster-card--pdf' : ''}`}
                                 key={idx}
+                                initial={{ opacity: 0, y: 30 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                                viewport={{ once: true, amount: 0.1 }}
                                 onClick={(e) => {
                                     if (isMobile && poster.type === 'pdf') {
                                         window.open(poster.src, '_blank');
@@ -63,7 +74,7 @@ export default function Artboard({ posters, handleOpenLightbox }) {
                                         View Large Scale <i className="fa-solid fa-expand"></i>
                                     </span>
                                 </div>
-                            </div>
+                            </motion.div>
                         ))}
                     </div>
                 </div>

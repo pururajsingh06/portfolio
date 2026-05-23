@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { motion } from 'framer-motion';
 
 export default function Hero({ handleCVDownload }) {
     const typewriterRef = useRef(null);
@@ -46,7 +47,13 @@ export default function Hero({ handleCVDownload }) {
     return (
         <section id="home" className="hero">
             <div className="container hero-grid">
-                <div className="hero-text">
+                <motion.div
+                    className="hero-text"
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8 }}
+                    viewport={{ once: true }}
+                >
                     <div className="hero-subtitle">
                         <span className="hero-pulse"></span>
                         Welcome to my Portfolio
@@ -76,7 +83,7 @@ export default function Hero({ handleCVDownload }) {
                             <i className="fa-solid fa-envelope" style={{ fontSize: '1.4rem' }}></i>
                         </a>
                     </div>
-                </div>
+                </motion.div>
             </div>
         </section>
     );

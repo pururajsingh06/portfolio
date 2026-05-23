@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import photo from '../assets/photo.png';
 
 const skills = [
@@ -13,12 +14,24 @@ export default function About() {
     return (
         <section id="about">
             <div className="container">
-                <div className="section-header">
+                <motion.div 
+                    className="section-header"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                >
                     <span className="section-subtitle">About Me</span>
                     <h2 className="section-title">Get To Know Me</h2>
-                </div>
+                </motion.div>
 
-                <div className="about-content">
+                <motion.div 
+                    className="about-content"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.2 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                >
                     {/* Top: Photo + Text row */}
                     <div className="about-top-row">
                         {/* Photo */}
@@ -57,7 +70,7 @@ export default function About() {
                             ))}
                         </div>
                     </div>
-                </div>
+                </motion.div>
             </div>
         </section>
     );
