@@ -52,7 +52,7 @@ export default function CanvasBackground({ theme }) {
             }
             
             draw() {
-                ctx.fillStyle = theme === 'light' ? 'rgba(48, 42, 24, 0.7)' : 'rgba(253, 228, 195, 0.3)';
+                ctx.fillStyle = theme === 'light' ? 'rgba(48, 42, 24, 0.25)' : 'rgba(253, 228, 195, 0.2)';
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
                 ctx.closePath();
@@ -99,7 +99,7 @@ export default function CanvasBackground({ theme }) {
         }
 
         function connectParticles() {
-            const lineColor = theme === 'light' ? 'rgba(48, 42, 24, 0.2)' : 'rgba(253, 228, 195, 0.08)';
+            const lineColor = theme === 'light' ? 'rgba(48, 42, 24, 0.04)' : 'rgba(253, 228, 195, 0.03)';
             for (let a = 0; a < particlesArray.length; a++) {
                 for (let b = a; b < particlesArray.length; b++) {
                     let dx = particlesArray[a].x - particlesArray[b].x;
