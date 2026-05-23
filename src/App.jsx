@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 // Asset imports
-import nescafeImg from './assets/Nescafé.png';
+import nescafeImg from './assets/Nescafe.png';
 import m5Img from './assets/M5.png';
 import pixelImg from './assets/Pixel.png';
 import omenfinalImg from './assets/Omenfinal.jpg';
