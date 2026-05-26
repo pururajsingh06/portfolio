@@ -166,40 +166,55 @@ export default function DraggableObject({ theme }) {
         };
     }, [theme]);
 
-    const handleMouseDown = (e) => {
+    const handleDragStart = (e) => {
+        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+
         isDragging.current = true;
         dragOffset.current = {
-            x: e.clientX - pos.current.x,
-            y: e.clientY - pos.current.y
+            x: clientX - pos.current.x,
+            y: clientY - pos.current.y
         };
-        mouseHistory.current = [{ x: e.clientX, y: e.clientY, time: Date.now() }];
+        mouseHistory.current = [{ x: clientX, y: clientY, time: Date.now() }];
         vel.current.x = 0;
         vel.current.y = 0;
         
-        // Prevent default to avoid text selection
-        e.preventDefault();
+        if (!e.touches) {
+            e.preventDefault(); // Prevent default to avoid text selection on desktop
+        }
         
-        document.addEventListener('mousemove', handleMouseMove);
-        document.addEventListener('mouseup', handleMouseUp);
+        document.addEventListener('mousemove', handleDragMove);
+        document.addEventListener('mouseup', handleDragEnd);
+        document.addEventListener('touchmove', handleDragMove, { passive: false });
+        document.addEventListener('touchend', handleDragEnd);
     };
 
-    const handleMouseMove = (e) => {
+    const handleDragMove = (e) => {
         if (!isDragging.current) return;
         
-        pos.current.x = e.clientX - dragOffset.current.x;
-        pos.current.y = e.clientY - dragOffset.current.y;
+        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+
+        pos.current.x = clientX - dragOffset.current.x;
+        pos.current.y = clientY - dragOffset.current.y;
         
         const now = Date.now();
-        mouseHistory.current.push({ x: e.clientX, y: e.clientY, time: now });
+        mouseHistory.current.push({ x: clientX, y: clientY, time: now });
         
         // Keep only history from the last 100ms for smooth velocity calculation
         mouseHistory.current = mouseHistory.current.filter(p => now - p.time < 100);
+
+        if (e.touches) {
+            e.preventDefault(); // Prevent scrolling the page while dragging the cube on mobile
+        }
     };
 
-    const handleMouseUp = () => {
+    const handleDragEnd = () => {
         isDragging.current = false;
-        document.removeEventListener('mousemove', handleMouseMove);
-        document.removeEventListener('mouseup', handleMouseUp);
+        document.removeEventListener('mousemove', handleDragMove);
+        document.removeEventListener('mouseup', handleDragEnd);
+        document.removeEventListener('touchmove', handleDragMove);
+        document.removeEventListener('touchend', handleDragEnd);
         
         // Calculate release velocity based on movement over the last 100ms
         const now = Date.now();
@@ -223,14 +238,16 @@ export default function DraggableObject({ theme }) {
     return (
         <div 
             ref={widgetRef}
-            onMouseDown={handleMouseDown}
+            onMouseDown={handleDragStart}
+            onTouchStart={handleDragStart}
             style={{ 
                 position: 'fixed', 
                 top: 0, left: 0, 
                 width: '150px', height: '150px',
                 cursor: isDragging.current ? 'grabbing' : 'grab',
                 zIndex: 9999,
-                display: 'flex', justifyContent: 'center', alignItems: 'center'
+                display: 'flex', justifyContent: 'center', alignItems: 'center',
+                touchAction: 'none' // Ensures browser doesn't intercept touch gestures
             }}
             title="Drag and throw me!"
         >
