@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Sun, Moon } from 'lucide-react';
 
 export default function Header({ theme, handleThemeToggle, activeSection }) {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -44,8 +45,7 @@ export default function Header({ theme, handleThemeToggle, activeSection }) {
 
                 <div className="nav-actions">
                     <button className="theme-toggle" id="theme-toggle" onClick={handleThemeToggle} aria-label="Toggle dark/light theme">
-                        <i className="fa-solid fa-moon" style={{ display: theme === 'dark' ? 'block' : 'none' }}></i>
-                        <i className="fa-solid fa-sun" style={{ display: theme === 'light' ? 'block' : 'none' }}></i>
+                        {theme === 'dark' ? <Moon size={20} /> : <Sun size={20} />}
                     </button>
 
                     <button className={`menu-btn ${menuOpen ? 'active' : ''}`} id="menu-btn" onClick={() => setMenuOpen(prev => !prev)} aria-label="Open navigation menu">

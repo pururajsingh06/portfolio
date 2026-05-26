@@ -15,11 +15,13 @@ import Footer from './components/Footer';
 import Lightbox from './components/Lightbox';
 import Toast from './components/Toast';
 import CustomCursor from './components/CustomCursor';
+import DraggableObject from './components/DraggableObject';
 
 // Import Layout Page Sections
 import Hero from './sections/Hero';
 import About from './sections/About';
 import Projects from './sections/Projects';
+import Skills from './sections/Skills';
 import Artboard from './sections/Artboard';
 import Contact from './sections/Contact';
 
@@ -246,6 +248,9 @@ export default function App() {
 
     return (
         <>
+            {/* Fun Widgets */}
+            <DraggableObject theme={theme} />
+
             {/* Custom Interactive Cursor */}
             <CustomCursor />
 
@@ -263,6 +268,7 @@ export default function App() {
                 {/* Main Page Layout Sections */}
                 <Hero handleCVDownload={handleCVDownload} />
                 <About />
+                <Skills />
                 <Projects
                     activeCategory={activeCategory}
                     setActiveCategory={setActiveCategory}

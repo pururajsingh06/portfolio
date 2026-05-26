@@ -1,4 +1,5 @@
 import React from 'react';
+import { Mail } from 'lucide-react';
 
 export default function Footer() {
     return (
@@ -14,7 +15,7 @@ export default function Footer() {
                 </div>
                 <div className="footer-right">
                     <a href="mailto:pururajsingh76@gmail.com" className="footer-social-link" aria-label="Email Address">
-                        <i className="fa-solid fa-envelope"></i>
+                        <Mail size={20} />
                     </a>
                     <a href="https://github.com/pururajsingh06" target="_blank" rel="noopener noreferrer" className="footer-social-link" aria-label="GitHub Profile">
                         <i className="fa-brands fa-github"></i>

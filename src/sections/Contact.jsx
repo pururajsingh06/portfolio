@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Mail, Send, Loader2 } from 'lucide-react';
 
 export default function Contact({ form, errors, handleInputChange, handleFormSubmit, submitStatus }) {
     return (
@@ -29,7 +30,7 @@ export default function Contact({ form, errors, handleInputChange, handleFormSub
 
                             <div className="contact-item" style={{ marginTop: '1rem' }}>
                                 <a href="mailto:pururajsingh76@gmail.com" className="contact-icon" aria-label="Email Address">
-                                    <i className="fa-solid fa-envelope"></i>
+                                    <Mail size={24} />
                                 </a>
                                 <div className="contact-details">
                                     <h4>Email Address</h4>
@@ -126,9 +127,9 @@ export default function Contact({ form, errors, handleInputChange, handleFormSub
 
                             <button type="submit" className="btn btn-primary" style={{ width: '100%', justifyContent: 'center' }} disabled={submitStatus === 'sending'}>
                                 {submitStatus === 'sending' ? (
-                                    <>Sending... <i className="fa-solid fa-spinner fa-spin" style={{ marginLeft: '0.5rem' }}></i></>
+                                    <>Sending... <Loader2 className="fa-spin" style={{ marginLeft: '0.5rem' }} size={18} /></>
                                 ) : (
-                                    <>Send Message <i className="fa-solid fa-paper-plane" style={{ marginLeft: '0.5rem' }}></i></>
+                                    <>Send Message <Send style={{ marginLeft: '0.5rem' }} size={18} /></>
                                 )}
                             </button>
 

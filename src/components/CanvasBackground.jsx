@@ -9,127 +9,134 @@ export default function CanvasBackground({ theme }) {
         
         const ctx = canvas.getContext('2d');
         let animationFrameId;
-        let particlesArray = [];
-        const numberOfParticles = 75;
         
-        const mouse = {
-            x: null,
-            y: null,
-            radius: 120
-        };
+        let width, height;
+        let time = 0;
+        let particles = [];
+        
+        const mouse = { x: null, y: null };
 
         const handleMouseMove = (event) => {
             mouse.x = event.clientX;
             mouse.y = event.clientY;
         };
-
         const handleMouseOut = () => {
             mouse.x = null;
             mouse.y = null;
         };
-
         const handleResize = () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
             initParticles();
         };
 
         window.addEventListener('mousemove', handleMouseMove);
         window.addEventListener('mouseout', handleMouseOut);
         window.addEventListener('resize', handleResize);
-
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-
-        class Particle {
-            constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.size = Math.random() * 2.5 + 0.5;
-                this.speedX = Math.random() * 0.4 - 0.2;
-                this.speedY = Math.random() * 0.4 - 0.2;
-                this.density = (Math.random() * 30) + 1;
+        
+        function initParticles() {
+            particles = [];
+            const numParticles = Math.floor((window.innerWidth * window.innerHeight) / 18000);
+            for (let i = 0; i < numParticles; i++) {
+                particles.push({
+                    x: Math.random() * window.innerWidth,
+                    y: Math.random() * window.innerHeight,
+                    size: Math.random() * 1.5 + 0.5,
+                    speedX: (Math.random() - 0.5) * 0.4,
+                    speedY: (Math.random() - 0.5) * 0.4,
+                    opacity: Math.random() * 0.6 + 0.1
+                });
             }
+        }
+        
+        handleResize();
+
+        function drawScene() {
+            ctx.clearRect(0, 0, width, height);
+            time += 0.0015;
             
-            draw() {
-                ctx.fillStyle = theme === 'light' ? 'rgba(48, 42, 24, 0.25)' : 'rgba(253, 228, 195, 0.2)';
+            // Adjust base color based on theme
+            const baseColor = theme === 'light' ? '0, 0, 0' : '255, 255, 255';
+            
+            // --- 1. Draw Flowing Topography Mesh ---
+            const numLines = 35;
+            const mouseEffectRadius = 250;
+            
+            for (let i = 0; i < numLines; i++) {
                 ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.closePath();
-                ctx.fill();
+                
+                // Smooth opacity gradient for lines (fade at edges, opaque in center)
+                const lineOpacity = 0.01 + Math.sin((i / (numLines - 1)) * Math.PI) * 0.045;
+                ctx.strokeStyle = `rgba(${baseColor}, ${lineOpacity})`;
+                ctx.lineWidth = 1;
+                
+                for (let x = -50; x <= width + 50; x += 30) {
+                    // Spread lines vertically
+                    let baseY = (height * 0.15) + (i * (height * 0.7 / numLines));
+                    
+                    // Complex wave pattern
+                    let wave1 = Math.sin(x * 0.0015 + time + i * 0.04) * 80;
+                    let wave2 = Math.cos(x * 0.0025 - time * 1.2 + i * 0.02) * 50;
+                    let wave3 = Math.sin(x * 0.0008 + time * 0.8) * 120;
+                    
+                    let y = baseY + wave1 + wave2 + wave3;
+                    
+                    // Mouse distortion for lines
+                    if (mouse.x !== null && mouse.y !== null) {
+                        const dx = x - mouse.x;
+                        const dy = y - mouse.y;
+                        const distance = Math.sqrt(dx * dx + dy * dy);
+                        
+                        if (distance < mouseEffectRadius) {
+                            const force = Math.pow((mouseEffectRadius - distance) / mouseEffectRadius, 2);
+                            const pushDirection = dy > 0 ? 1 : -1;
+                            y += pushDirection * force * 45;
+                        }
+                    }
+                    
+                    if (x === -50) {
+                        ctx.moveTo(x, y);
+                    } else {
+                        ctx.lineTo(x, y);
+                    }
+                }
+                ctx.stroke();
             }
             
-            update() {
+            // --- 2. Draw Floating Stardust Particles ---
+            particles.forEach(p => {
+                p.x += p.speedX;
+                p.y += p.speedY;
+                
+                // Wrap around edges
+                if (p.x < 0) p.x = width;
+                if (p.x > width) p.x = 0;
+                if (p.y < 0) p.y = height;
+                if (p.y > height) p.y = 0;
+                
+                // Mouse interaction for particles
                 if (mouse.x !== null && mouse.y !== null) {
-                    let dx = mouse.x - this.x;
-                    let dy = mouse.y - this.y;
-                    let distance = Math.sqrt(dx * dx + dy * dy);
+                    const dx = p.x - mouse.x;
+                    const dy = p.y - mouse.y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
                     
-                    if (distance < mouse.radius) {
-                        let forceDirectionX = dx / distance;
-                        let forceDirectionY = dy / distance;
-                        let maxDistance = mouse.radius;
-                        let force = (maxDistance - distance) / maxDistance;
-                        let directionX = forceDirectionX * force * this.density * 0.6;
-                        let directionY = forceDirectionY * force * this.density * 0.6;
-                        
-                        this.x -= directionX;
-                        this.y -= directionY;
-                    } else {
-                        this.x += this.speedX;
-                        this.y += this.speedY;
+                    if (distance < 120) {
+                        const force = (120 - distance) / 120;
+                        p.x += (dx / distance) * force * 1.5;
+                        p.y += (dy / distance) * force * 1.5;
                     }
-                } else {
-                    this.x += this.speedX;
-                    this.y += this.speedY;
                 }
                 
-                if (this.x < 0) this.x = canvas.width;
-                if (this.x > canvas.width) this.x = 0;
-                if (this.y < 0) this.y = canvas.height;
-                if (this.y > canvas.height) this.y = 0;
-            }
+                ctx.beginPath();
+                ctx.fillStyle = `rgba(${baseColor}, ${p.opacity * 0.4})`;
+                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                ctx.fill();
+            });
+            
+            animationFrameId = requestAnimationFrame(drawScene);
         }
 
-        function initParticles() {
-            particlesArray = [];
-            for (let i = 0; i < numberOfParticles; i++) {
-                particlesArray.push(new Particle());
-            }
-        }
-
-        function connectParticles() {
-            const lineColor = theme === 'light' ? 'rgba(48, 42, 24, 0.04)' : 'rgba(253, 228, 195, 0.03)';
-            for (let a = 0; a < particlesArray.length; a++) {
-                for (let b = a; b < particlesArray.length; b++) {
-                    let dx = particlesArray[a].x - particlesArray[b].x;
-                    let dy = particlesArray[a].y - particlesArray[b].y;
-                    let distance = Math.sqrt(dx * dx + dy * dy);
-                    
-                    if (distance < 110) {
-                        ctx.strokeStyle = lineColor;
-                        ctx.lineWidth = 0.5;
-                        ctx.beginPath();
-                        ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
-                        ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
-                        ctx.stroke();
-                    }
-                }
-            }
-        }
-
-        function animateParticles() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            for (let i = 0; i < particlesArray.length; i++) {
-                particlesArray[i].update();
-                particlesArray[i].draw();
-            }
-            connectParticles();
-            animationFrameId = requestAnimationFrame(animateParticles);
-        }
-
-        initParticles();
-        animateParticles();
+        drawScene();
 
         return () => {
             window.removeEventListener('mousemove', handleMouseMove);

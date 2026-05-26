@@ -2,13 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import photo from '../assets/photo.png';
 
-const skills = [
-    'C++', 'Python', 'JavaScript', 'Java', 'React', 'Tailwind CSS',
-    'HTML5', 'CSS3', 'React Router', 'Bootstrap', 'Node.js', 'Socket.IO',
-    'JWT', 'TensorFlow', 'PyTorch', 'Scikit-learn', 'Keras', 'Pandas',
-    'NumPy', 'Matplotlib', 'MongoDB', 'MySQL', 'Git', 'GitHub',
-    'Figma', 'Canva', 'Streamlit'
-];
+
 
 export default function About() {
     return (
@@ -61,15 +55,7 @@ export default function About() {
                         </div>
                     </div>
 
-                    {/* Skills */}
-                    <div className="about-skills-section">
-                        <h3 className="about-skills-heading">Skills</h3>
-                        <div className="about-skills-tags">
-                            {skills.map((skill, idx) => (
-                                <span className="skill-tag" key={idx}>{skill}</span>
-                            ))}
-                        </div>
-                    </div>
+
                 </motion.div>
             </div>
         </section>

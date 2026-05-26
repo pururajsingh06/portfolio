@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { X, ChevronLeft, ChevronRight, ExternalLink } from 'lucide-react';
 
 export default function Lightbox({ lightbox, handleCloseLightbox, handlePrevPoster, handleNextPoster }) {
     const [isMobile, setIsMobile] = useState(false);
@@ -21,11 +22,11 @@ export default function Lightbox({ lightbox, handleCloseLightbox, handlePrevPost
             onClick={(e) => e.target.id === 'lightbox' && handleCloseLightbox()}
         >
             <button className="lightbox-close" onClick={handleCloseLightbox} aria-label="Close image viewer">
-                <i className="fa-solid fa-xmark"></i>
+                <X size={24} />
             </button>
             
             <button className="lightbox-nav lightbox-prev" onClick={handlePrevPoster} aria-label="Previous poster">
-                <i className="fa-solid fa-chevron-left"></i>
+                <ChevronLeft size={24} />
             </button>
             
             <div className="lightbox-content-wrapper">
@@ -48,7 +49,7 @@ export default function Lightbox({ lightbox, handleCloseLightbox, handlePrevPost
                                 gap: '0.5rem',
                                 backdropFilter: 'blur(4px)'
                             }}>
-                                <i className="fa-solid fa-arrow-up-right-from-square"></i> Tap to read PDF
+                                <ExternalLink size={20} /> Tap to read PDF
                             </div>
                         </div>
                     ) : (
@@ -68,7 +69,7 @@ export default function Lightbox({ lightbox, handleCloseLightbox, handlePrevPost
             </div>
             
             <button className="lightbox-nav lightbox-next" onClick={handleNextPoster} aria-label="Next poster">
-                <i className="fa-solid fa-chevron-right"></i>
+                <ChevronRight size={24} />
             </button>
         </div>
     );

@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
+import { ArrowRight, Download, Mail } from 'lucide-react';
 
 export default function Hero({ handleCVDownload }) {
     const typewriterRef = useRef(null);
@@ -66,9 +67,9 @@ export default function Hero({ handleCVDownload }) {
                         I am a <span ref={typewriterRef} className="gradient-text" style={{ fontWeight: 700 }}></span><span className="typewriter-cursor">|</span> who blends elegant technical code with visually breathtaking graphics. Let's build something exceptional.
                     </p>
                     <div className="hero-ctas">
-                        <a href="#projects" className="btn btn-primary">View My Work <i className="fa-solid fa-arrow-right"></i></a>
+                        <a href="#projects" className="btn btn-primary">View My Work <ArrowRight size={18} /></a>
                         <button onClick={handleCVDownload} className="btn btn-secondary">
-                            <i className="fa-solid fa-download"></i>  Resume
+                            <Download size={18} /> Resume
                         </button>
                     </div>
 
@@ -80,7 +81,7 @@ export default function Hero({ handleCVDownload }) {
                             <i className="fa-brands fa-linkedin-in" style={{ fontSize: '1.4rem' }}></i>
                         </a>
                         <a href="mailto:pururajsingh76@gmail.com" className="hero-social-link" aria-label="Send Email">
-                            <i className="fa-solid fa-envelope" style={{ fontSize: '1.4rem' }}></i>
+                            <Mail size={24} />
                         </a>
                     </div>
                 </motion.div>

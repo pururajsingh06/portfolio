@@ -1,4 +1,5 @@
 import React from 'react';
+import { CheckCircle, AlertCircle } from 'lucide-react';
 
 export default function Toast({ visible, message, type = 'success' }) {
     return (
@@ -6,9 +7,9 @@ export default function Toast({ visible, message, type = 'success' }) {
             <div className={`toast ${visible ? 'show' : ''} ${type}`} id="success-toast">
                 <div className="toast-icon">
                     {type === 'success' ? (
-                        <i className="fa-solid fa-circle-check" style={{ color: 'var(--accent-primary)' }}></i>
+                        <CheckCircle style={{ color: 'var(--accent-primary)' }} />
                     ) : (
-                        <i className="fa-solid fa-circle-exclamation" style={{ color: 'var(--accent-secondary)' }}></i>
+                        <AlertCircle style={{ color: 'var(--accent-secondary)' }} />
                     )}
                 </div>
                 <div className="toast-content">

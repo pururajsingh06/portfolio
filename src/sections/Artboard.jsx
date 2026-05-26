@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { Maximize } from 'lucide-react';
 
 export default function Artboard({ posters, handleOpenLightbox }) {
     const [isMobile, setIsMobile] = useState(false);
@@ -71,7 +72,7 @@ export default function Artboard({ posters, handleOpenLightbox }) {
                                     </span>
                                     <h3 className="poster-title">{poster.title}</h3>
                                     <span className="poster-view-btn">
-                                        View Large Scale <i className="fa-solid fa-expand"></i>
+                                        View Large Scale <Maximize size={16} style={{ marginLeft: '4px' }} />
                                     </span>
                                 </div>
                             </motion.div>

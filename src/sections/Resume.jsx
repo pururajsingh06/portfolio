@@ -1,4 +1,5 @@
 import React from 'react';
+import { Download } from 'lucide-react';
 
 export default function Resume({ handleCVDownload }) {
     return (
@@ -11,7 +12,7 @@ export default function Resume({ handleCVDownload }) {
                 
                 <div className="resume-cta-container">
                     <button className="btn btn-primary" id="download-cv-btn" onClick={handleCVDownload}>
-                        <i className="fa-solid fa-download"></i> View & Save Interactive Resume (PDF)
+                        <Download size={18} style={{ marginRight: '8px' }} /> View & Save Interactive Resume (PDF)
                     </button>
                 </div>
             </div>

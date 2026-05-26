@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { ExternalLink } from 'lucide-react';
 
 export default function Projects({ activeCategory, setActiveCategory }) {
     const projects = [
@@ -115,7 +116,7 @@ export default function Projects({ activeCategory, setActiveCategory }) {
                                         )}
                                         {proj.demo && (
                                             <a href={proj.demo} target={proj.demo === '#' ? '_self' : '_blank'} rel="noopener noreferrer" className="project-icon-link" aria-label="Live Demo Link">
-                                                <i className="fa-solid fa-arrow-up-right-from-square"></i>
+                                                <ExternalLink size={20} />
                                             </a>
                                         )}
                                     </div>
