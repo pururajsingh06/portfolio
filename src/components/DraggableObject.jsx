@@ -54,10 +54,15 @@ export default function DraggableObject({ theme }) {
                 pos.current.x += vel.current.x;
                 pos.current.y += vel.current.y;
                 
-                // Bounds collision
-                const size = 150; // widget size
-                const maxX = window.innerWidth - size;
-                const maxY = window.innerHeight - size;
+                // Bounds collision with padding offset to match visual cube size
+                const widgetSize = 150;
+                const paddingOffset = 30; // Amount the transparent canvas can go off-screen
+                
+                const maxX = window.innerWidth - widgetSize + paddingOffset;
+                const maxY = window.innerHeight - widgetSize + paddingOffset;
+                const minX = -paddingOffset;
+                const minY = -paddingOffset;
+                
                 const bounce = -0.65;
                 
                 if (pos.current.y >= maxY) { 
@@ -68,10 +73,10 @@ export default function DraggableObject({ theme }) {
                     // Stop micro-bouncing
                     if (Math.abs(vel.current.y) < 2) vel.current.y = 0;
                 }
-                if (pos.current.y <= 0) { pos.current.y = 0; vel.current.y *= bounce; }
+                if (pos.current.y <= minY) { pos.current.y = minY; vel.current.y *= bounce; }
                 
                 if (pos.current.x >= maxX) { pos.current.x = maxX; vel.current.x *= bounce; }
-                if (pos.current.x <= 0) { pos.current.x = 0; vel.current.x *= bounce; }
+                if (pos.current.x <= minX) { pos.current.x = minX; vel.current.x *= bounce; }
                 
                 // Rotation spins based on velocity
                 rotation.current.y += vel.current.x * 0.01 + 0.01;
