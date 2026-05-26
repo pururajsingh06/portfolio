@@ -24,6 +24,12 @@ export default function DraggableObject({ theme }) {
         const widget = widgetRef.current;
         if (!canvas || !ctx || !widget) return;
 
+        // Support high-DPI (Retina) displays for crisp edges
+        const dpr = window.devicePixelRatio || 1;
+        canvas.width = 150 * dpr;
+        canvas.height = 150 * dpr;
+        ctx.scale(dpr, dpr);
+
         // Cube vertices
         const nodes = [
             [-1, -1, -1], [-1, -1, 1], [-1, 1, -1], [-1, 1, 1],
@@ -80,7 +86,7 @@ export default function DraggableObject({ theme }) {
         };
 
         const renderCube = () => {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.clearRect(0, 0, 150, 150);
             
             const color = theme === 'light' ? '#111' : '#F5F5F5';
             ctx.strokeStyle = color;
@@ -88,8 +94,8 @@ export default function DraggableObject({ theme }) {
             ctx.lineCap = 'round';
             ctx.lineJoin = 'round';
             
-            const cx = canvas.width / 2;
-            const cy = canvas.height / 2;
+            const cx = 150 / 2;
+            const cy = 150 / 2;
             const scale = 45; // size of cube
             
             // Rotation math
@@ -251,7 +257,7 @@ export default function DraggableObject({ theme }) {
             }}
             title="Drag and throw me!"
         >
-            <canvas ref={canvasRef} width="150" height="150" style={{ pointerEvents: 'none' }}></canvas>
+            <canvas ref={canvasRef} style={{ width: '150px', height: '150px', pointerEvents: 'none' }}></canvas>
         </div>
     );
 }
